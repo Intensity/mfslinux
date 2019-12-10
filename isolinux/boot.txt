@@ -1,4 +1,5 @@
-mfslinux %%MFSLINUX_VERSION%%
-Copyright (c) 2018 Martin Matuska <mm at FreeBSD.org>
+Memory filesystem Linux
 
-a - Boot mfslinux (OpenWrt %%OPENWRT_VERSION%%)
+Derived from mfslinux 0.1.5 20a000a Copyright (c) 2018 Martin Matuska <mm at FreeBSD.org>
+
+a - Boot default

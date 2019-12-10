@@ -1,41 +1,24 @@
-# mfslinux build instructions
+# Linux memory filesystem build instructions
 
-Copyright (c) 2018 Martin Matuska <mm at FreeBSD.org>
+Derived from mfslinux, Copyright (c) 2018 Martin Matuska <mm at FreeBSD.org>
 
-## Configuration
-Read hints in the default configuration files in the config/default directory.
-You may copy these files to the config directory and make modifications
-to suit your needs.
+- See `Creating an image` section for build instructions
 
-## Additional packages and files
-If you want any additional packages downloaded and installed, you need to copy
-the package list from config/default to config and edit it.
+## Project status
+
+Upstream project files kept intact; however, the build process used here is Docker, using configuration files mostly orthogonal to the original project
+
+Current example creates a CentOS 7 image. However, another version or distribution can be used by modifying the Dockerfile
 
 ## Requirements
 
-You need to build as root (ext4 image extraction and chrooting is required).
-
-### Linux
- - openssl, git, mkisofs or genisoimage
-
-### FreeBSD
- - git (devel/git), mkisofs (sysutils/cdrtools), opkg-cl (archivers/opkg)
- - linux64 module loaded for opkg chroot
+ - Docker to build
+ - ZeroTier executable artifact
+ - ZeroTier address of network to request to join, and SSH key to add
 
 ## Creating an image
 
-Simply run make on Linux or gmake on FreeBSD
-
-## Examples
-
-1. create mfslinux.iso bootable ISO file on Linux with a different root password:
-
-  ```bash
-  make ROOTPW=testpass
-  ```
-
-2. create mfslinux.iso bootable ISO file on FreeBSD with increased verbosity:
-
-  ```bash
-  gmake VERBOSE=1
-  ```
+ - Add `zerotier-one` executable artifact to top level directory
+ - Modify `Dockerfile` to replace ZeroTier ID network to join (currently set to the `earth` address), and the SSH key to add
+ - `docker build .`
+ - Retrieve `mfslinux.iso` generated artifact

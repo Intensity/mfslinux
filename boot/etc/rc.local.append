@@ -1,0 +1,12 @@
+if test -d /etc/boot.d/./
+then
+  for i in /etc/boot.d/*.sh
+  do
+    if test -f "$i" && test -x "$i"
+    then
+      sh "$i"
+    fi
+  done
+fi
+
+exit 0
